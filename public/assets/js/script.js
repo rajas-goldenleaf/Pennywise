@@ -1,4 +1,5 @@
 'use strict';
+"use client";
 const preLoader = function () {
     let preloaderWrapper = document.getElementById(
         'preloader'
