@@ -1,12 +1,21 @@
+"use client"
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/header/header";
 import IndexBody from "@/components/index_page/IndexBody";
 import IndexFooter from "@/components/index_page/IndexFooter"
+import Loader from "@/components/loader/loader";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 50)
+  }, [])
   return (
     <React.Fragment>
+      <Loader isLoading={isLoading} />
       <Header />
       <IndexBody />
       <IndexFooter />
@@ -502,7 +511,7 @@ function ProductPreviewModal({ isVisible }: ProductPreviewModal) {
                               id="color-red1"
                               name="color"
                               type="radio"
-                              defaultChecked=""
+                            // defaultChecked=""
                             />
                             <label
                               className="variant__color--value red"
@@ -572,7 +581,7 @@ function ProductPreviewModal({ isVisible }: ProductPreviewModal) {
                               id="weight1"
                               name="weight"
                               type="radio"
-                              defaultChecked=""
+                            // defaultChecked=""
                             />
                             <label
                               className="variant__size--value red"
