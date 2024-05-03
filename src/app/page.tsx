@@ -16,9 +16,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <Loader isLoading={isLoading} />
-      <Header />
       <IndexBody />
-      <IndexFooter />
       <ProductPreviewModal isVisible={false} />
     </React.Fragment>
   );

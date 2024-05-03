@@ -4413,16 +4413,16 @@ input[type=number]::-webkit-outer-spin-button {
 	-webkit-transform: scale(1.03);
 	transform: scale(1.03);
 }
-.product__items:hover .add__to--cart__btn {
+/* .product__items:hover .add__to--cart__btn {
 	opacity: 1;
 	visibility: visible;
 	top: 10px;
-}
-.product__items:hover .product__items--content__title {
+} */
+/* .product__items:hover .product__items--content__title {
 	opacity: 0;
 	visibility: hidden;
 	top: 20px;
-}
+} */
 .product__items:hover .product__items--action {
 	opacity: 1;
 	visibility: visible;
@@ -5183,8 +5183,8 @@ input[type=number]::-webkit-outer-spin-button {
 	transition: .3s;
 }
 .product__section--style3__inner .product__items2:hover {
-	-webkit-box-shadow: 0 2px 22px rgba(0, 0, 0, .16);
-	box-shadow: 0 2px 22px rgba(0, 0, 0, .16);
+	/* -webkit-box-shadow: 0 2px 22px rgba(0, 0, 0, .16);
+	box-shadow: 0 2px 22px rgba(0, 0, 0, .16); */
 }
 .deals3__banner--section__inner {
 	background: var(--white-color);

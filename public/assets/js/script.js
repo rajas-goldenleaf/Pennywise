@@ -294,87 +294,87 @@ var swiper = new Swiper('.hero__slider--activation', {
         spaceBetween: 10,
         thumbs: { swiper: swiper }
     });
-const tab = function (wrapper) {
-    let tabContainer = document.querySelector(wrapper);
-    tabContainer &&
-        tabContainer.addEventListener('click', function (
-            evt
-        ) {
-            let listItem = evt.target;
-            if (listItem.hasAttribute('data-toggle')) {
-                let targetId = listItem.dataset.target,
-                    targetItem = document.querySelector(
-                        targetId
+// const tab = function (wrapper) {
+//     let tabContainer = document.querySelector(wrapper);
+//     tabContainer &&
+//         tabContainer.addEventListener('click', function (
+//             evt
+//         ) {
+//             let listItem = evt.target;
+//             if (listItem.hasAttribute('data-toggle')) {
+//                 let targetId = listItem.dataset.target,
+//                     targetItem = document.querySelector(
+//                         targetId
+//                     );
+//                 listItem.parentElement
+//                     .querySelectorAll('[data-toggle="tab"]')
+//                     .forEach(function (list) {
+//                         list.classList.remove('active');
+//                     }),
+//                     listItem.classList.add('active'),
+//                     targetItem.classList.add('active'),
+//                     setTimeout(function () {
+//                         targetItem.classList.add('show');
+//                     }, 150),
+//                     getSiblings(
+//                         targetItem
+//                     ).forEach(function (pane) {
+//                         pane.classList.remove('show'),
+//                             setTimeout(function () {
+//                                 pane.classList.remove(
+//                                     'active'
+//                                 );
+//                             }, 150);
+//                     });
+//             }
+//         });
+// };
+// tab('.product__tab--one'),
+document
+    .querySelectorAll('[data-countdown]')
+    .forEach(function (elem) {
+        const countDownItem = function (value, label) {
+            return `<div class="countdown__item" ${label}"><span class="countdown__number">${value}</span><p class="countdown__text">${label}</p></div>`;
+        },
+            date = new Date(
+                elem.getAttribute('data-countdown')
+            ).getTime(),
+            second = 1e3,
+            minute = 6e4,
+            hour = 36e5,
+            day = 864e5,
+            countDownInterval = setInterval(function () {
+                let currentTime = new Date().getTime(),
+                    timeDistance = date - currentTime,
+                    daysValue = Math.floor(
+                        timeDistance / day
+                    ),
+                    hoursValue = Math.floor(
+                        (timeDistance % day) / 36e5
+                    ),
+                    minutesValue = Math.floor(
+                        (timeDistance % 36e5) / 6e4
+                    ),
+                    secondsValue = Math.floor(
+                        (timeDistance % 6e4) / 1e3
                     );
-                listItem.parentElement
-                    .querySelectorAll('[data-toggle="tab"]')
-                    .forEach(function (list) {
-                        list.classList.remove('active');
-                    }),
-                    listItem.classList.add('active'),
-                    targetItem.classList.add('active'),
-                    setTimeout(function () {
-                        targetItem.classList.add('show');
-                    }, 150),
-                    getSiblings(
-                        targetItem
-                    ).forEach(function (pane) {
-                        pane.classList.remove('show'),
-                            setTimeout(function () {
-                                pane.classList.remove(
-                                    'active'
-                                );
-                            }, 150);
-                    });
-            }
-        });
-};
-tab('.product__tab--one'),
-    document
-        .querySelectorAll('[data-countdown]')
-        .forEach(function (elem) {
-            const countDownItem = function (value, label) {
-                return `<div class="countdown__item" ${label}"><span class="countdown__number">${value}</span><p class="countdown__text">${label}</p></div>`;
-            },
-                date = new Date(
-                    elem.getAttribute('data-countdown')
-                ).getTime(),
-                second = 1e3,
-                minute = 6e4,
-                hour = 36e5,
-                day = 864e5,
-                countDownInterval = setInterval(function () {
-                    let currentTime = new Date().getTime(),
-                        timeDistance = date - currentTime,
-                        daysValue = Math.floor(
-                            timeDistance / day
-                        ),
-                        hoursValue = Math.floor(
-                            (timeDistance % day) / 36e5
-                        ),
-                        minutesValue = Math.floor(
-                            (timeDistance % 36e5) / 6e4
-                        ),
-                        secondsValue = Math.floor(
-                            (timeDistance % 6e4) / 1e3
-                        );
-                    (elem.innerHTML =
-                        countDownItem(daysValue, 'days') +
-                        countDownItem(hoursValue, 'hrs') +
-                        countDownItem(
-                            minutesValue,
-                            'mins'
-                        ) +
-                        countDownItem(
-                            secondsValue,
-                            'secs'
-                        )),
-                        timeDistance < 0 &&
-                        clearInterval(
-                            countDownInterval
-                        );
-                }, 1e3);
-        });
+                (elem.innerHTML =
+                    countDownItem(daysValue, 'days') +
+                    countDownItem(hoursValue, 'hrs') +
+                    countDownItem(
+                        minutesValue,
+                        'mins'
+                    ) +
+                    countDownItem(
+                        secondsValue,
+                        'secs'
+                    )),
+                    timeDistance < 0 &&
+                    clearInterval(
+                        countDownInterval
+                    );
+            }, 1e3);
+    });
 const activeClassAction = function (toggle, target) {
     const to = document.querySelector(toggle),
         ta = document.querySelector(target);
