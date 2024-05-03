@@ -5,6 +5,9 @@ import "../../public/assets/css/plugins/glightbox.min.css";
 import "../../public/assets/css/google_fonts.css"
 import "../../public/assets/css/vendor/bootstrap.min.css";
 import "../../public/assets/css/style.css";
+import Header from "@/components/header/header";
+import IndexFooter from "@/components/index_page/IndexFooter";
+import Loader from "@/components/loader/loader";
 // import { Inter } from "next/font/google";
 // import "./globals.css";
 // const inter = Inter({ subsets: ["latin"] });
@@ -27,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         {children}
-
         <ScrollToTop />
+
+        <IndexFooter />
         {/* //! this(glightbox) is causing the hydration error for some reason, */}
         {/* //? More to look into it*/}
         <Script src="/assets/js/vendor/popper.js" />
