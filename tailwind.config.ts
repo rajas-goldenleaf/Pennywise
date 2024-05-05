@@ -1,6 +1,9 @@
 import type { Config } from "tailwindcss";
+//! NOTE: reference-> https://stackoverflow.com/a/72580574
 
 const config: Config = {
+  prefix: 'tw-',
+  important: true,
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
