@@ -15,7 +15,7 @@ jobs:
         node-version: "16.20.2"
     
     - name: Install dependencies
-      run: npm cli
+      run: npm ci
 
     - name: Run build
       run: npm run build
