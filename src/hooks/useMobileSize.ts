@@ -2,14 +2,14 @@
  * This function will return a boolean value of true or false depending on the size of the window.
  * @returns A boolean value.
  */
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 // Hook
-function useMobileSize(props?: string) {
+function useMobileSize() {
   const [mobileSize, setMobileSize] = useState<boolean>();
-  useEffect(() => {
+  useLayoutEffect(() => {
     function handleResize() {
       if (typeof window !== "undefined") {
-        (props === "AdvancedSearch" ? 991 : 1200) > window.innerWidth ? setMobileSize(true) : setMobileSize(false);
+        window.innerWidth < 720 ? setMobileSize(true) : setMobileSize(false);
       }
     }
     window.addEventListener("resize", handleResize);
