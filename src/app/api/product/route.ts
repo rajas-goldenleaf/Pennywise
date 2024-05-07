@@ -248,6 +248,8 @@ export async function GET(request: NextRequest) {
         "discount": "$716.45",
         "image": "product1.png"
     }]
+    // for testing purpose
+    // await new Promise(resolve => setTimeout(resolve, 1000));
 
     return NextResponse.json({ data }, { status: 200 })
     // return NextResponse.json({ message: "user not authorized" }, { status: 401 })

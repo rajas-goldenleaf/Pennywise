@@ -19,7 +19,7 @@ export default function MainGridList() {
     }, [mobile])
 
     const { data = { data: [] }, isLoading, error } = useProduct();
-    isLoading ? console.log("Loading") : error ? console.log({ data: error.data, status: error.status }) : console.log(data)
+    // isLoading ? console.log("Loading") : error ? console.log({ data: error.data, status: error.status }) : console.log(data)
 
     return (
         <section className="shop__section section--padding">
@@ -29,12 +29,12 @@ export default function MainGridList() {
                 <div className="row">
                     <div className="col-12">
                         <div className="shop__product--wrapper">
-                            <div className="tab_content">
+                            <div className="tab_content" style={{ minHeight: "100vh" }}>
                                 {
                                     productView == "grid_view" ?
-                                        <GridView productData={data.data} />
+                                        <GridView productData={data.data} isLoading={isLoading} />
                                         :
-                                        <ListView productData={data.data} />
+                                        <ListView productData={data.data} isLoading={isLoading} />
                                 }
 
 
