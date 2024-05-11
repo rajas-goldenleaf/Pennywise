@@ -16,7 +16,7 @@ export default function GridView({ productData, isLoading }: GridViewProps) {
                         isLoading ?
                             Array.from(new Array(10).keys()).map((item, idx) =>
                                 <div key={idx}>
-                                    <Skeleton />
+                                    <Skeleton uniqueKey={idx.toString()} />
                                 </div>
                             )
                             :

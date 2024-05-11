@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# Resources 
+## IndexDB 
+Use Browsers to store any value don't use local storage as it is slow in secure and live updates are not possible every time we have check if value is present or not 
+
+to implement it in nextjs use this blog it explains wonderfully how to implement it in nextJs project
+[How to use indexDB (dexie lib)in NextJs](https://webkul.com/blog/how-to-use-indexeddb-dexie-in-nextjs/)

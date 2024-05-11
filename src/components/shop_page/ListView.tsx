@@ -9,6 +9,7 @@ type ListViewProps = {
     productData: ProductType[],
     isLoading: boolean
 }
+// <div className="col mb-30" key={idx}><ListViewSkeleton keyIndex={idx.toString()} /></div>
 export default function ListView({ productData, isLoading }: ListViewProps) {
     return (
         <div id="product_list" className="tab_pane active show">
@@ -17,8 +18,11 @@ export default function ListView({ productData, isLoading }: ListViewProps) {
                     {
                         isLoading ?
                             Array.from(new Array(10).keys()).map((idx) => (
-                                <div className="col mb-30" key={idx}><ListViewSkeleton /></div>
-                            )) :
+                                <div className="col mb-30" key={idx}>
+                                    <ListViewSkeleton keyIndex={idx.toString()} />
+                                </div>
+                            ))
+                            :
                             productData?.map((item, idx) => (
                                 <div className="col mb-30" key={idx}>
                                     <div className="product__items product__list--items d-flex">
@@ -164,28 +168,30 @@ export default function ListView({ productData, isLoading }: ListViewProps) {
 }
 
 // let mobile = window.matchMedia("(max-width: 600px)").matches;
-function ListViewSkeleton() {
+type KeyIndexType = { keyIndex: string }
+function ListViewSkeleton({ keyIndex }: KeyIndexType) {
     const mobile = useMobileSize()
 
     return (
         <React.Fragment>
             {
                 !mobile ?
-                    <ListViewSkeletonDesktop />
+                    <ListViewSkeletonDesktop keyIndex={keyIndex} />
                     :
-                    <ListViewSkeletonMobile />
+                    <ListViewSkeletonMobile keyIndex={keyIndex} />
 
             }
         </React.Fragment>
     )
 }
-function ListViewSkeletonMobile() {
+function ListViewSkeletonMobile({ keyIndex }: KeyIndexType) {
     return (
         <ContentLoader
             width={367}
             height={137}
             backgroundColor="#bfbfbf"
             foregroundColor="#fafafa"
+            uniqueKey={keyIndex}
         >
             <rect x="140" y="13" rx="2" ry="2" width="180" height="20" />
             <rect x="140" y="40" rx="5" ry="5" width="100" height="15" />
@@ -198,13 +204,14 @@ function ListViewSkeletonMobile() {
     )
 }
 
-function ListViewSkeletonDesktop() {
+function ListViewSkeletonDesktop({ keyIndex }: KeyIndexType) {
     return (
         <ContentLoader
             width={1200}
             height={280}
             backgroundColor="#bfbfbf"
             foregroundColor="#fafafa"
+            uniqueKey={keyIndex}
         >
             <rect x="320" y="20" rx="5" ry="5" width="300" height="20" />
             <rect x="320" y="50" rx="5" ry="5" width="220" height="18" />
