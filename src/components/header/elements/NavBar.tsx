@@ -1,3 +1,4 @@
+"use client"
 import useSearch from "@/hooks/useSearch";
 import Link from "next/link";
 import React from "react";
