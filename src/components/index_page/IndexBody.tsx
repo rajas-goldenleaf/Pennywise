@@ -4,8 +4,9 @@ import React, { useEffect } from 'react'
 export default function IndexBody() {
     useEffect(() => {
         async function getSuggestions() {
-            axios.post("/api/dmart/pincode/suggestions/", { pincode: "411057" })
+            axios.post("/api/dmart/pincode/suggestions/", { pincode: "411030" })
                 .then(res => {
+                    console.log(res.data)
                     res.data.totalRecords && getDetails(res.data.searchResult[0])
                 })
                 .catch(err => {

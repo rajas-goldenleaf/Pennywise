@@ -1,7 +1,10 @@
+import useSearch from "@/hooks/useSearch";
 import Link from "next/link";
 import React from "react";
 
 export default function NavBar() {
+    const { changeSearchText, submitHandler, searchResults } = useSearch();
+    console.log(searchResults)
     return (
         <div className="main__header header__sticky">
             <div className="container">
@@ -52,7 +55,8 @@ export default function NavBar() {
                     <div className="header__search--widget d-none d-lg-block header__sticky--none">
                         <form
                             className="d-flex header__search--form"
-                            action="/"
+                            // action="/"
+                            onSubmit={submitHandler}
                         >
                             <div className="header__select--categories select">
                                 <select className="header__select--inner">
@@ -82,6 +86,7 @@ export default function NavBar() {
                                     <input
                                         className="header__search--input"
                                         placeholder="Search Product"
+                                        onChange={changeSearchText}
                                         type="text"
                                     />
                                 </label>

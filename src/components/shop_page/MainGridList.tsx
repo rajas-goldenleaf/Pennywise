@@ -5,6 +5,7 @@ import ListView from "./ListView";
 import GridView from "./GridView";
 import useProduct from "@/hooks/useProduct";
 import useMobileSize from "@/hooks/useMobileSize";
+import useSearch from "@/hooks/useSearch";
 
 export default function MainGridList() {
     const mobile = useMobileSize();
@@ -18,8 +19,14 @@ export default function MainGridList() {
         mobile ? setProductView("list_view") : setProductView("grid_view")
     }, [mobile])
 
-    const { data = { data: [] }, isLoading, error } = useProduct();
+    //TODO: this is not working states are not shared accross different components/ use contextAPI to share state between components, use this context api at layout.tsx page
+    const { data = { data: [] } } = useProduct();
     // isLoading ? console.log("Loading") : error ? console.log({ data: error.data, status: error.status }) : console.log(data)
+    const { searchResults, isLoading, error, searchText } = useSearch();
+    console.log(isLoading)
+    console.log(searchText)
+    console.log(searchResults)
+
 
     return (
         <section className="shop__section section--padding">
