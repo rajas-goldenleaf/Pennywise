@@ -1,6 +1,30 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 
 export default function IndexBody() {
+    useEffect(() => {
+        async function getSuggestions() {
+            axios.post("/api/dmart/pincode/suggestions/", { pincode: "411030" })
+                .then(res => {
+                    console.log(res.data)
+                    res.data.totalRecords && getDetails(res.data.searchResult[0])
+                })
+                .catch(err => {
+                    console.log(err.response)
+                })
+        }
+        async function getDetails(suggestedResults: []) {
+            try {
+                console.log(suggestedResults)
+                const response = await axios.post("/api/dmart/pincode/details", suggestedResults)
+                localStorage.setItem("storeId", response.data.storePincodeDetails.storeId)
+            } catch (err: any) {
+                console.log(err.response)
+            }
+        }
+        getSuggestions()
+        // getDetails()
+    }, [])
     return (
         <main className="main__content_wrapper">
             <SliderSection />
