@@ -1,11 +1,12 @@
 import { fetchDmartPincodeSuggestions } from "@/services/Dmart/service";
+import withCors from "@/utils/withCors";
 import { NextRequest, NextResponse } from "next/server";
 
 type Payload = {
     pincode: string
 }
-export async function POST(request: NextRequest) {
-    const data: Payload = await request.json();
+export const POST = withCors(async (req: NextRequest, res: NextResponse) => {
+    const data: Payload = await req.json();
     // make request to the dmart storeID
     const pincodeSuggestions = await fetchDmartPincodeSuggestions(data.pincode);
 
@@ -22,4 +23,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(JSON.parse(pincodeSuggestions).data, { status: 200 })
 
+});
+
+export const GET = async (req: NextRequest, res: NextResponse) => {
+    return NextResponse.json({ msg: "hello there working" }, { status: 200 })
 }
